@@ -1,0 +1,3 @@
+Components in the UI Kit ($lib/components) may have different variations e.g. default button, outline button, etc. To choose a particular variation, pass in the variation's class names via the "class" prop. Class names should be passed in a string, with each class name separated by a space character. Note: Do not include the customary "." (dot) class selector at the start of the class name.
+
+Components may have different variations, or types. These types are created using CSS classes within the style block of the component. To be able to select a type of a component, the component exports a "type" prop. Pass the name of CSS class, for the type of component desired, through this prop.
