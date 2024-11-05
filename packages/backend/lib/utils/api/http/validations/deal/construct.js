@@ -1,6 +1,6 @@
 const { Construct } = require('constructs');
 const { Model, RequestValidator } = require("aws-cdk-lib/aws-apigateway");
-const { jsonSchema } = require("#schemas/deal.schema.js");
+const { jsonSchema } = require("@super-deals-copy/shared");
 
 class DealValidations extends Construct {
   constructor(scope, id, props) {
