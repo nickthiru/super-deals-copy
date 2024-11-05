@@ -1,0 +1,25 @@
+{
+  "name": "super-deals-copy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "private": true,
+  "workspaces": [
+    "packages/frontend",
+    "packages/backend",
+    "packages/shared"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nickthiru/super-deals-copy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nickthiru/super-deals-copy/issues"
+  },
+  "homepage": "https://github.com/nickthiru/super-deals-copy#readme"
+}

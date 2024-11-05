@@ -64,7 +64,7 @@ const jsonSchema = zodToJsonSchema(staticDealSchema, {
  * This function returns a schema that includes dynamic validation logic,
  * such as checking that the expiration date is not in the past.
  */
-export default getDealSchema;
+export { getDealSchema };
 
 /**
  * Export the jsonSchema object for use in API Gateway Model validations.
