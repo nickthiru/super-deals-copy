@@ -1,29 +1,28 @@
 <script>
-  import SectionTitle from "$lib/components/shared/SectionTitle.svelte";
-  // import { capitalize } from "$shared/utils/capitalize";
-  import { capitalize } from "@super-deals-copy/shared";
+	import SectionTitle from '$lib/components/shared/SectionTitle.svelte';
+	// import { capitalize } from "$shared/utils/capitalize";
+	import { capitalize } from '@super-deals-copy/shared';
 
-  export let sectionName = "";
+	export let sectionName = '';
 
-  $: capSectionName = capitalize(sectionName, "-");
+	$: capSectionName = capitalize(sectionName, '-');
 </script>
 
-<section 
-  aria-labelledby={sectionName} 
-  style:grid-area={sectionName}
+<section
+	aria-labelledby={sectionName}
+	style:grid-area={sectionName}
 >
-  <SectionTitle id={sectionName}>
-    {capSectionName}
-  </SectionTitle>
+	<SectionTitle id={sectionName}>
+		{capSectionName}
+	</SectionTitle>
 
-  <slot />
+	<slot />
 </section>
 
-
 <style>
-  section {
-    padding: 15px;
-    border: 1px solid black;
-    position: relative;
-  }
+	section {
+		padding: 15px;
+		border: 1px solid black;
+		position: relative;
+	}
 </style>

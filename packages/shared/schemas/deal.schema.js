@@ -2,10 +2,17 @@ import { zfd } from 'zod-form-data';
 import { z } from 'zod';
 import { zodToJsonSchema } from 'zod-to-json-schema';
 
-/** @type {readonly string[]} */
+
+/**
+ * Allowed file types for the deal logo.
+ * @type {readonly string[]}
+ */
 const allowedFileTypes = ['jpg', 'jpeg', 'png', 'gif'];
 
-/** @type {readonly string[]} */
+/**
+ * Enum values for the deal category.
+ * @type {readonly string[]}
+ */
 const categoryEnum = [
   'foodDrink',
   'bathroom',
@@ -17,7 +24,10 @@ const categoryEnum = [
   'travel',
 ];
 
-// Common schema object
+/**
+ * Common schema object.
+ * @type {object}
+ */
 const commonSchemaObject = {
   merchantId: zfd.text(z.string().min(1, 'Merchant ID is required')),
   title: zfd.text(z.string().max(255, 'Title must be 255 characters or less')),
@@ -32,9 +42,9 @@ const commonSchemaObject = {
 
 /**
  * Returns the deal schema with dynamic validation for expiration date.
- * @returns {import('zod').ZodType<DealSchema>}
+ * @returns {import('zod').ZodType<DealFormSchema>}
  */
-function getDealSchema() {
+const getDealSchema = () => {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
@@ -42,7 +52,7 @@ function getDealSchema() {
     ...commonSchemaObject,
     expiration: zfd.text(z.string().refine((val) => !isNaN(Date.parse(val)) && new Date(val) >= today, 'Expiration must be today\'s date or later')),
   });
-}
+};
 
 /**
  * Static schema for API Gateway validation.
@@ -53,22 +63,12 @@ const staticDealSchema = zfd.formData({
   expiration: zfd.text(z.string().refine((val) => !isNaN(Date.parse(val)), 'Expiration must be a valid date')),
 });
 
-// Convert the Zod schema to JSON schema
+/**
+ * JSON schema for the deal.
+ */
 const jsonSchema = zodToJsonSchema(staticDealSchema, {
   $refStrategy: 'none',
   target: 'openApi3',
 });
 
-/**
- * Export the getDealSchema function for use in +page.server.js validations.
- * This function returns a schema that includes dynamic validation logic,
- * such as checking that the expiration date is not in the past.
- */
-export { getDealSchema };
-
-/**
- * Export the jsonSchema object for use in API Gateway Model validations.
- * This schema is a static representation of the deal schema, and is used
- * to validate incoming requests to the API Gateway.
- */
-export { jsonSchema };
+export { getDealSchema, jsonSchema };
