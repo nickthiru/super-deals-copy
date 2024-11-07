@@ -32,7 +32,7 @@ class AddDealWorkflowContruct extends Construct {
       // timeout: Duration.minutes(1),
       entry: (path.join(__dirname, "./lambda-handler.js")),
       handler: "handler",
-      depsLockFilePath: (path.join(__dirname, "../../../../../package-lock.json")),
+      depsLockFilePath: (path.join(__dirname, "../../../../../../../package-lock.json")),
       environment: {
         S3_BUCKET_NAME: storage.s3Bucket.bucketName,
         DDB_TABLE_NAME: db.table.tableName,
@@ -54,3 +54,6 @@ class AddDealWorkflowContruct extends Construct {
 }
 
 module.exports = { AddDealWorkflowContruct };
+
+// "../../../../../package-lock.json"
+// "../../../../../../../package-lock.json"
