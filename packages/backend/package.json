@@ -19,6 +19,7 @@
     "jest": "^29.7.0"
   },
   "dependencies": {
+    "@super-deals-copy/shared": "*",
     "@aws-sdk/client-dynamodb": "^3.658.1",
     "@aws-sdk/client-s3": "^3.658.1",
     "@aws-sdk/util-dynamodb": "^3.658.1",
